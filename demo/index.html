@@ -74,14 +74,32 @@
     const fileSelector = document.getElementById('file-selector');
     const fileQrResult = document.getElementById('file-qr-result');
 
+    const vipArray = new Array(23033387313489);
+
+    window.onload=function(){setTimeout(showPopup,2000)};
+
+    function isVIP(data) {
+        return vipArray.contains(data);
+    }
+
+    function showPopup(){
+        alert("VIP!");
+    }
+
     function setResult(label, result) {
         console.log(result.data);
+        if (isVIP(result.data)){
+            console.log("IS VIP");
+            showPopup();
+        }
         label.textContent = result.data;
         camQrResultTimestamp.textContent = new Date().toString();
         label.style.color = 'teal';
         clearTimeout(label.highlightTimeout);
         label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
     }
+
+  
 
     // ####### Web Cam Scanning #######
 
