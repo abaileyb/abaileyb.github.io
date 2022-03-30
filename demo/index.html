@@ -5,7 +5,7 @@
     <title>Fight Night QR Scanner Demo</title>
 </head>
 <body>
-<h1>Scan from iphone3:</h1>
+<h1>Scan from iphone4:</h1>
 <div id="video-container">
     <video id="qr-video"></video>
 </div>
@@ -76,7 +76,7 @@
 
     const vipArray = [23033387313489];
 
-    window.onload=function(){setTimeout(showPopup,2000)};
+    // window.onload=function(){setTimeout(showPopup,2000)};
 
     function isVIP(data) {
         console.log("IN isVIP");
@@ -84,7 +84,10 @@
     }
 
     function showPopup(){
-        alert("VIP!");
+        document.body.style.backgroundColor = "red";
+        setTimeout(function(){
+            document.body.style.backgroundColor = "white";
+        }, 1000)
     }
 
     function setResult(label, result) {
