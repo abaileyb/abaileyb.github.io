@@ -76,21 +76,20 @@
 
     const vipArray = [23033387313489];
 
-    window.onload=function(){setTimeout(showPopup,2000)};
+    // window.onload=function(){setTimeout(showPopup,2000)};
 
     function isVIP(data) {
         return vipArray.contains(data);
     }
 
-    function showPopup(){
-        alert("VIP!");
-    }
+    // function showPopup(){
+    //     alert("VIP!");
+    // }
 
     function setResult(label, result) {
         console.log(result.data);
         if (isVIP(result.data)){
             console.log("IS VIP");
-            showPopup();
         }
         label.textContent = result.data;
         camQrResultTimestamp.textContent = new Date().toString();
