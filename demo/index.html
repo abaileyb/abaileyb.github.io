@@ -5,7 +5,7 @@
     <title>Fight Night QR Scanner Demo</title>
 </head>
 <body>
-<h1>Scan from iphone4:</h1>
+<h1>Scan from iphone5:</h1>
 <div id="video-container">
     <video id="qr-video"></video>
 </div>
@@ -74,16 +74,16 @@
     const fileSelector = document.getElementById('file-selector');
     const fileQrResult = document.getElementById('file-qr-result');
 
-    const vipArray = [23033387313489];
+    const vipSet = new Set([23033387313489]);
 
-    // window.onload=function(){setTimeout(showPopup,2000)};
+    // window.onload=function(){setTimeout(switchColor,2000)};
 
     function isVIP(data) {
         console.log("IN isVIP");
-        return vipArray.includes(parseInt(data));
+        return vipSet.has(parseInt(data));
     }
 
-    function showPopup(){
+    function switchColor(){
         document.body.style.backgroundColor = "red";
         setTimeout(function(){
             document.body.style.backgroundColor = "white";
@@ -94,7 +94,7 @@
         console.log(result.data);
         if (isVIP(result.data)){
             console.log("IS VIP");
-            showPopup();
+            switchColor();
         }
         label.textContent = result.data;
         camQrResultTimestamp.textContent = new Date().toString();
