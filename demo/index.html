@@ -59,6 +59,7 @@
 
 <!--<script src="../qr-scanner.umd.min.js"></script>-->
 <!--<script src="../qr-scanner.legacy.min.js"></script>-->
+<!-- <script type="text/javascript" src="vip_json.json"></script> -->
 <script type="module">
     import QrScanner from "../qr-scanner.min.js";
 
@@ -75,6 +76,9 @@
     const fileQrResult = document.getElementById('file-qr-result');
 
     const vipSet = new Set([23033387313489]);
+
+    const jsonData= require('../vip_json.json'); 
+    console.log(jsonData);  
 
     // window.onload=function(){setTimeout(switchColor,2000)};
 
