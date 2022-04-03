@@ -78,7 +78,10 @@
 
     const vipSet = new Set([23033387313489]);
 
-    const jsonData= require('../vip_json.json'); 
+    $.getJSON("../vip_json.json", function(json) {
+        console.log(json); // this will show the info it in firebug console
+    });
+
     console.log(jsonData);  
 
     // window.onload=function(){setTimeout(switchColor,2000)};
