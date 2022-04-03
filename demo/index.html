@@ -61,6 +61,10 @@
 <!--<script src="../qr-scanner.umd.min.js"></script>-->
 <!--<script src="../qr-scanner.legacy.min.js"></script>-->
 <!-- <script type="text/javascript" src="vip_json.json"></script> -->
+<script src="../vips.js"></script>
+<script src="../ga.js"></script>
+<script src="../premiums.js"></script>
+<script src="../ponly.js"></script>
 <script type="module">
     import QrScanner from "../qr-scanner.min.js";
 
@@ -78,32 +82,80 @@
 
     const vipSet = new Set([23033387313489]);
 
-    $.getJSON("../vip_json.json", function(json) {
-        console.log(json); // this will show the info it in firebug console
-    });
-
-    console.log(jsonData);  
-
     // window.onload=function(){setTimeout(switchColor,2000)};
 
     function isVIP(data) {
         console.log("IN isVIP");
-        return vipSet.has(parseInt(data));
+        return vips.includes(data);
     }
 
-    function switchColor(){
+    function isPremium(data) {
+        console.log("IN isPrem");
+        return premiums.includes(data);
+    }
+
+    function isGA(data) {
+        console.log("IN isGA");
+        return ga.includes(data);
+    }
+
+    function isPOnly(data) {
+        console.log("IN ponly");
+        return ponly.includes(data);
+    }
+
+
+    function switchColorRed(){
         document.body.style.backgroundColor = "red";
         setTimeout(function(){
             document.body.style.backgroundColor = "white";
         }, 1000)
     }
 
+    function switchColorGreen(){
+        document.body.style.backgroundColor = "green";
+        setTimeout(function(){
+            document.body.style.backgroundColor = "white";
+        }, 1000)
+    }
+
+    function switchColorYellow(){
+        document.body.style.backgroundColor = "yellow";
+        setTimeout(function(){
+            document.body.style.backgroundColor = "white";
+        }, 1000)
+    }
+
+    function switchColorBlue(){
+        document.body.style.backgroundColor = "blue";
+        setTimeout(function(){
+            document.body.style.backgroundColor = "white";
+        }, 1000)
+    }
+
     function setResult(label, result) {
-        console.log(result.data);
+        const data = result.data;
+        console.log(data);
         if (isVIP(result.data)){
             console.log("IS VIP");
-            switchColor();
+            switchColorRed();
         }
+        else if (isPremium(data)){
+            console.log("IS PREM");
+            switchColorGreen();
+        }
+        else if (isGA(data)){
+            console.log("IS GA");
+            switchColorBlue();
+        }
+        else if (isPOnly(data)){
+            console.log("IS PO");
+            switchColorYellow();
+        }
+        else {
+            console.log("major error");
+        }
+        
         label.textContent = result.data;
         camQrResultTimestamp.textContent = new Date().toString();
         label.style.color = 'teal';
