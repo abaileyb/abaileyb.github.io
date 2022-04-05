@@ -57,22 +57,22 @@
     // window.onload=function(){setTimeout(switchColor,2000)};
 
     function isVIP(data) {
-        console.log("IN isVIP");
+        // console.log("IN isVIP");
         return vips.includes(data);
     }
 
     function isPremium(data) {
-        console.log("IN isPrem");
+        // console.log("IN isPrem");
         return premiums.includes(data);
     }
 
     function isGA(data) {
-        console.log("IN isGA");
+        // console.log("IN isGA");
         return ga.includes(data);
     }
 
     function isPOnly(data) {
-        console.log("IN ponly");
+        // console.log("IN ponly");
         return ponly.includes(data);
     }
 
@@ -113,23 +113,22 @@
         const data = result.data;
         console.log(data);
         if (isVIP(result.data)){
-            console.log("IS VIP");
+            // console.log("IS VIP");
             switchColorRed();
             scanLevel.textContent = "VIP";
         }
         else if (isPremium(data)){
-            console.log("IS PREM");
-            console.log("1");
+            // console.log("IS PREM");
             switchColorGreen();
             scanLevel.textContent = "PREMIUM";
         }
         else if (isGA(data)){
-            console.log("IS GA");
+            // console.log("IS GA");
             switchColorBlue();
             scanLevel.textContent = "GENERAL ADMISSION";
         }
         else if (isPOnly(data)){
-            console.log("IS PO");
+            // console.log("IS PO");
             switchColorYellow();
             scanLevel.textContent = "PALESTRA ONLY";
         }
