@@ -85,7 +85,7 @@
         }, 1000)
     }
 
-    function switchColor(){
+    function switchColorGreen(){
         document.body.style.backgroundColor = "green";
         setTimeout(function(){
             document.body.style.backgroundColor = "white";
@@ -119,6 +119,7 @@
         }
         else if (isPremium(data)){
             console.log("IS PREM");
+            console.log("1");
             switchColorGreen();
             scanLevel.textContent = "PREMIUM";
         }
