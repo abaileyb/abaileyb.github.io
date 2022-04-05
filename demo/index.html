@@ -6,51 +6,17 @@
     <script data-main="scripts/app" src="../require.js"></script>
 </head>
 <body>
+<h1> CURRENT SCAN - <span id="scan-level"> No Scan Yet </span></h1>
 <h1>Scan from Mobile device: (data updated 4/3)</h1>
-<h2>VIP - RED</h2>
-<h2>PREMIUM - GREEN</h2>
-<h2>GA - BLUE</h2>
-<h2>PALESTRA ONLY - YELLOW</h2>
+<h2>Guide:</h2>
+<h2><span style="text-decoration: underline; text-decoration-color: red;">VIP - RED</span></h2>
+<h2><span style="text-decoration: underline; text-decoration-color: green;">PREMIUM - GREEN</span></h2>
+<h2><span style="text-decoration: underline; text-decoration-color: blue;">GA - BLUE</span></h2>
+<h2><span style="text-decoration: underline; text-decoration-color: yellow;">PALESTRA ONLY - YELLOW</span></h2>
 <div id="video-container">
     <video id="qr-video"></video>
 </div>
-<!-- <div>
-    <label>
-        Highlight Style
-        <select id="scan-region-highlight-style-select">
-            <option value="default-style">Default style</option>
-            <option value="example-style-1">Example custom style 1</option>
-            <option value="example-style-2">Example custom style 2</option>
-        </select>
-    </label>
-    <label>
-        <input id="show-scan-region" type="checkbox">
-        Show scan region canvas
-    </label>
-</div>
-<div>
-    <select id="inversion-mode-select">
-        <option value="original">Scan original (dark QR code on bright background)</option>
-        <option value="invert">Scan with inverted colors (bright QR code on dark background)</option>
-        <option value="both">Scan both</option>
-    </select>
-    <br>
-</div>
-<b>Device has camera: </b>
-<span id="cam-has-camera"></span>
-<br>
-<div>
-    <b>Preferred camera:</b>
-    <select id="cam-list">
-        <option value="environment" selected>Environment Facing (default)</option>
-        <option value="user">User Facing</option>
-    </select>
-</div>
-<b>Camera has flash: </b>
-<span id="cam-has-flash"></span>
-<div>
-    <button id="flash-toggle">📸 Flash: <span id="flash-state">off</span></button>
-</div> -->
+
 <br>
 <b>Detected QR code: </b>
 <span id="cam-qr-result">None</span>
@@ -84,6 +50,8 @@
     const fileSelector = document.getElementById('file-selector');
     const fileQrResult = document.getElementById('file-qr-result');
 
+    const scanLevel = document.getElementById('scan-level');
+
     const vipSet = new Set([23033387313489]);
 
     // window.onload=function(){setTimeout(switchColor,2000)};
@@ -116,7 +84,7 @@
         }, 1000)
     }
 
-    function switchColorGreen(){
+    function switchColor(){
         document.body.style.backgroundColor = "green";
         setTimeout(function(){
             document.body.style.backgroundColor = "white";
@@ -143,18 +111,22 @@
         if (isVIP(result.data)){
             console.log("IS VIP");
             switchColorRed();
+            scanLevel.textContent = "VIP";
         }
         else if (isPremium(data)){
             console.log("IS PREM");
             switchColorGreen();
+            scanLevel.textContent = "PREMIUM";
         }
         else if (isGA(data)){
             console.log("IS GA");
             switchColorBlue();
+            scanLevel.textContent = "GENERAL ADMISSION";
         }
         else if (isPOnly(data)){
             console.log("IS PO");
             switchColorYellow();
+            scanLevel.textContent = "PALESTRA ONLY";
         }
         else {
             console.log("major error");
