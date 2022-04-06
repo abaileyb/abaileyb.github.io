@@ -61,7 +61,7 @@ print("NUM PO: " + str(len(ponly)))
 # with open('ponly.json', 'w') as outfile:
 #     json.dump(ponly, outfile)
 
-with open('vip.js', 'w') as f:
+with open('vips.js', 'w') as f:
     print >> f, "const vips = ["
     for vip in vips:
         print >> f, "\"" + vip + "\"" + ", "
