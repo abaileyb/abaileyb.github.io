@@ -66,3 +66,21 @@ with open('vips.js', 'w') as f:
     for vip in vips:
         print >> f, "\"" + vip + "\"" + ", "
     print >> f, "];"
+
+with open('premiums.js', 'w') as f:
+    print >> f, "const premiums = ["
+    for premium in premiums:
+        print >> f, "\"" + premium + "\"" + ", "
+    print >> f, "];"
+
+with open('ga.js', 'w') as f:
+    print >> f, "const ga = ["
+    for eaga in ga:
+        print >> f, "\"" + eaga + "\"" + ", "
+    print >> f, "];"
+
+with open('ponly.js', 'w') as f:
+    print >> f, "const ponly = ["
+    for ponlyea in ponly:
+        print >> f, "\"" + ponlyea + "\"" + ", "
+    print >> f, "];"
