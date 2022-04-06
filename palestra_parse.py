@@ -49,14 +49,20 @@ print("NUM PRE: " + str(len(premiums)))
 print("NUM GEN: " + str(len(ga)))
 print("NUM PO: " + str(len(ponly)))
 
-with open('vip_json.json', 'w') as outfile:
-    json.dump(vips, outfile)
+# with open('vip_json.json', 'w') as outfile:
+#     json.dump(vips, outfile)
 
-with open('premium_json.json', 'w') as outfile:
-    json.dump(premiums, outfile)
+# with open('premium_json.json', 'w') as outfile:
+#     json.dump(premiums, outfile)
 
-with open('ga.json', 'w') as outfile:
-    json.dump(ga, outfile)
+# with open('ga.json', 'w') as outfile:
+#     json.dump(ga, outfile)
 
-with open('ponly.json', 'w') as outfile:
-    json.dump(ponly, outfile)
+# with open('ponly.json', 'w') as outfile:
+#     json.dump(ponly, outfile)
+
+with open('vip.js', 'w') as f:
+    print >> f, "const vips = ["
+    for vip in vips:
+        print >> f, "\"" + vip + "\"" + ", "
+    print >> f, "];"
