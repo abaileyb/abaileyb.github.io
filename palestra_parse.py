@@ -13,6 +13,9 @@ with open(filename, 'r') as csvfile:
      
     # extracting field names through first row
     fields = next(csvreader)
+
+    for field in fields:
+        print field
  
     # extracting each data row one by one
     for row in csvreader:
@@ -27,20 +30,21 @@ ga = []
 ponly = []
 
 for row in rows:
-    if row['Barcode '][0:3] == "BC=":
+    print row
+    if row['\xef\xbb\xbfBarcode '][0:3] == "BC=":
         #is an actual barcode
         if row['Seatblock '][0:3] == "VIP":
             #is a vip
-            vips.append(row['Barcode '][3:].strip())
+            vips.append(row['\xef\xbb\xbfBarcode '][3:].strip())
         elif row['Seatblock '][0:3] == "PRE":
             #is a premium
-            premiums.append(row['Barcode '][3:].strip())
+            premiums.append(row['\xef\xbb\xbfBarcode '][3:].strip())
         elif row['Seatblock '][0:3] == "GEN":
             #is a genad
-            ga.append(row['Barcode '][3:].strip())
+            ga.append(row['\xef\xbb\xbfBarcode '][3:].strip())
         elif row['Seatblock '][0:3] == "PON":
             #is a ponly
-            ponly.append(row['Barcode '][3:].strip())
+            ponly.append(row['\xef\xbb\xbfBarcode '][3:].strip())
         else:
             print("MAJOR ERROR!!" + row['Seatblock '])
 
